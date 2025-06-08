@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PersonalComs Image</title>
   <style>
     body {
@@ -14,8 +15,6 @@
       display: block;
       margin: auto;
       transition: all 0.3s ease;
-      max-width: 100%;
-      height: auto;
     }
 
     .controls {
@@ -24,10 +23,12 @@
       right: 20px;
       display: flex;
       gap: 12px;
-      z-index: 9999; /* Make sure it's on top */
+      z-index: 1000;
+      pointer-events: none;
     }
 
     .controls img {
+      pointer-events: auto;
       width: 60px;
       height: 60px;
       max-width: 15vw;
@@ -36,7 +37,6 @@
       border-radius: 12px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
-      pointer-events: auto; /* Ensure buttons can be clicked */
     }
 
     .controls img:hover {
@@ -52,8 +52,8 @@
       .controls img {
         width: 50px;
         height: 50px;
-        max-width: 15vw;
-        max-height: 15vw;
+        max-width: 12vw;
+        max-height: 12vw;
       }
     }
 
@@ -68,10 +68,8 @@
   </style>
 </head>
 <body>
-  <!-- Main image -->
   <img id="main-image" src="sleepyeyeballcom.png" alt="High-res image" />
 
-  <!-- Cute control buttons -->
   <div class="controls">
     <img src="min.png" alt="Minimise" onclick="minimiseImage()" />
     <img src="max.png" alt="Maximise" onclick="maximiseImage()" />
@@ -79,6 +77,11 @@
 
   <script>
     const image = document.getElementById('main-image');
+
+    function showOriginalSize() {
+      image.style.width = image.naturalWidth + 'px';
+      image.style.height = image.naturalHeight + 'px';
+    }
 
     function minimiseImage() {
       image.style.width = '100%';
@@ -89,6 +92,9 @@
       image.style.width = '7000px';
       image.style.height = 'auto';
     }
+
+    // 💡 Set original size when image loads
+    image.onload = showOriginalSize;
   </script>
 </body>
 </html>
