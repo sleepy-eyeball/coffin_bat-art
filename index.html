@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>PersonalComs Image</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      overflow: auto;
-    }
+<meta charset="UTF-8" />
+<title>PersonalComs Image</title>
+<style>
+body {
+  margin: 0;
+  background-color: #000;
+  overflow: auto;
+}
 
-    #main-image {
-      display: block;
-      margin: auto;
-      transition: all 0.3s ease;
-      max-width: 100%;
-      height: auto;
-    }
+#main-image {
+  display: block;
+  margin: auto;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  height: auto;
+}
 
-    .controls {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      gap: 12px;
-      z-index: 10;
-    }
+.controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
 
-    .controls img {
-      width: 60px;      /* Changed from 50px */
-      height: 60px;     /* Changed from 50px */
-      max-width: 15vw;  /* Responsive scaling on small screens */
-      max-height: 15vw;
-      cursor: pointer;
-      border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
-    }
+.controls img {
+  width: 60px;
+  height: 60px;
+  max-width: 15vw;
+  max-height: 15vw;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
+}
 
-    .controls img:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 12px rgba(255, 192, 203, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
-    }
+.controls img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(255, 192, 203, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
+}
 
-    .controls img:active {
-      transform: scale(0.95);
-    }
+.controls img:active {
+  transform: scale(0.95);
+}
 
-    @media (max-width: 768px) {
-      .controls img {
-        width: 50px;
-        height: 50px;
-        max-width: 12vw;
-        max-height: 12vw;
-      }
-    }
+/* For mobile phones */
+@media (max-width: 768px) {
+  .controls img {
+    width: 50px;
+    height: 50px;
+    max-width: 15vw;
+    max-height: 15vw;
+  }
+}
 
-    @media (orientation: landscape) {
-      .controls img {
-        width: 40px;
-        height: 40px;
-      }
-    }
-  </style>
+/* For iPhone-like landscape portrait */
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .controls img {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 10vw !important;
+    max-height: 10vw !important;
+  }
+}
+</style>
 </head>
 <body>
-  <!-- Full-resolution image -->
   <img id="main-image" src="sleepyeyeballcom.png" alt="High-res image" />
-
-  <!-- Cute control buttons -->
   <div class="controls">
     <img src="min.png" alt="Minimise" onclick="minimiseImage()" />
     <img src="max.png" alt="Maximise" onclick="maximiseImage()" />
   </div>
 
-  <script>
-    const image = document.getElementById('main-image');
-
-    function minimiseImage() {
-      image.style.width = '100%';
-      image.style.height = 'auto';
-    }
-
-    function maximiseImage() {
-      image.style.width = '7000px';
-      image.style.height = 'auto';
-    }
-  </script>
+<script>
+const image = document.getElementById('main-image');
+function minimiseImage() {
+  image.style.width = '100%';
+  image.style.height = 'auto';
+}
+function maximiseImage() {
+  image.style.width = '7000px';
+  image.style.height = 'auto';
+}
+</script>
 </body>
 </html>
